@@ -110,16 +110,15 @@ def setup_xprahtml5():
         get_xpra_executable('xpra'),
         'start-desktop',
         '--html=on',
-        '--bind-tcp=0.0.0.0:{port}', # {port} is template filled by the jupyter server proxy at launch
+        '--bind-tcp=0.0.0.0:{port},auth=none', # {port} is template filled by the jupyter server proxy at launch
         # '--socket-dir="' + socket_path + '/"',  # fixme: socket_dir not recognized
         '--server-idle-timeout=3600',  # stop server after 1h with no client connection
         # '--exit-with-client=yes',  # stop Xpra when the browser disconnects
-        '--start=xterm -fa "DejaVu Sans Mono" -fs 14',
-        '--start-child='+XPRA_START,
+        '--start='+XPRA_START,
         '--exit-with-children',
-        '--tcp-auth=file:filename=' + fpath_passwd,
-        '--tcp-encryption=AES',
-        '--tcp-encryption-keyfile=' + fpath_aeskey,
+        #'--tcp-auth=file:filename=' + fpath_passwd,
+        #'--tcp-encryption=AES',
+        #'--tcp-encryption-keyfile=' + fpath_aeskey,
         '--clipboard-direction=both',
         '--no-keyboard-sync',  # prevent keys from repeating unexpectedly on high latency
         '--no-mdns',           # do not advertise the xpra session on the local network
@@ -135,7 +134,7 @@ def setup_xprahtml5():
         '--no-daemon',  # mandatory
     ]
     logger.info('Xpra command: ' + ' '.join(cmd))
-
+    print('Xpra command: ' + ' '.join(cmd))
     return {
         'environment': {  # as '--socket-dir' does not work as expected, we set this
             'XDG_RUNTIME_DIR': socket_path,
