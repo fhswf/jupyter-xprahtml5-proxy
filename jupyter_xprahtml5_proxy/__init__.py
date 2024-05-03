@@ -103,7 +103,7 @@ def setup_xprahtml5():
         raise FileNotFoundError("Encryption key generation in temp file FAILED")
 
     # launchers url file including url parameters
-    path_info = 'xprahtml5/index.html' + _xprahtml5_urlparams()
+    #path_info = 'xprahtml5/index.html' + _xprahtml5_urlparams()
     path_info = 'xprahtml5/'
     XPRA_START =  os.environ.get("XPRA_START") if os.environ.get("XPRA_START") != None else "xfce4-session"
     # create commandyy
