@@ -117,7 +117,6 @@ def setup_xprahtml5():
         '--start=xterm -fa "DejaVu Sans Mono" -fs 14',
         '--start-child='+XPRA_START,
         '--exit-with-children',
-        '--tcp-encryption=AES',
         '--clipboard-direction=both',
         '--no-keyboard-sync',  # prevent keys from repeating unexpectedly on high latency
         '--no-mdns',           # do not advertise the xpra session on the local network
